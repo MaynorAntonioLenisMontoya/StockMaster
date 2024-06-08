@@ -1,0 +1,80 @@
+<form class="card" [formGroup]="myForm" (ngSubmit)="saveOrEditProduct">
+  <div class="mt-2" *ngIf="isViewInputId">
+    <p-floatLabel>
+      <p-inputNumber [disabled]="true" formControlName="id" id="nombre" />
+      <label for="float-input">Codigo</label>
+    </p-floatLabel>
+  </div>
+  <div class="mt-3">
+    <p-floatLabel>
+      <input formControlName="nombre" pInputText id="nombre" aria-describedby="nombre-help" />
+      <small class="mt-1 text-red-500" id="nombre-help" *ngIf="isValidField('nombre')">
+        El campo nombre es requerido*
+      </small>
+      <label for="float-input">Nombre</label>
+    </p-floatLabel>
+  </div>
+  <div class="mt-3">
+    <p-floatLabel>
+      <input formControlName="descripcion" pInputText id="descripcion" aria-describedby="descripcion-help" />
+      <small class="mt-1 text-red-500" id="descripcion-help" *ngIf="isValidField('descripcion')">
+        El campo descripción es requerido*
+      </small>
+      <label for="float-input">Descripción</label>
+    </p-floatLabel>
+  </div>
+  <div class="mt-3" *ngIf="isViewSelect">
+    <p-floatLabel>
+      <p-dropdown formControlName="categoriaId" [options]="categorias" optionLabel="nombre"
+        placeholder="Seleccionar categoria" [appendTo]="'body'" />
+      <small class="mt-1 text-red-500" id="categoriaId-help" *ngIf="isValidField('categoriaId')">
+        El campo Categoria es requerido*
+      </small>
+      <label for="float-input">Categoria</label>
+    </p-floatLabel>
+  </div>
+  <div class="mt-2">
+    <p-floatLabel>
+      <p-inputNumber formControlName="precioUnitario" id="precioUnitario" />
+      <small class="mt-1 text-red-500" id="precioUnitario-help" *ngIf="isValidField('precioUnitario')">
+        El campo Precio Unitario es requerido*
+      </small>
+      <label for="float-input">Precio Unitario</label>
+    </p-floatLabel>
+  </div>
+  <div class="mt-2">
+    <p-floatLabel>
+      <p-inputNumber formControlName="cantidadDisponible" id="cantidadDisponible" />
+      <small class="mt-1 text-red-500" id="cantidadDisponible-help" *ngIf="isValidField('cantidadDisponible')">
+        El campo Cantidad Disponible es requerido*
+      </small>
+      <label for="float-input">Cantidad Disponible</label>
+    </p-floatLabel>
+  </div>
+  <div class="mt-2">
+    <p-floatLabel>
+      <p-inputNumber formControlName="nivelMinimoStock" id="nivelMinimoStock" />
+      <small class="mt-1 text-red-500" id="nivelMinimoStock-help" *ngIf="isValidField('nivelMinimoStock')">
+        El campo Nivel Minimo Stock es requerido*
+      </small>
+      <label for="float-input">Nivel Minimo Stock</label>
+    </p-floatLabel>
+  </div>
+  <div class="mt-3" *ngIf="isViewSelect">
+    <p-floatLabel>
+      <p-dropdown formControlName="inventarioId" [options]="inventary" optionLabel="nombre"
+        placeholder="Seleccionar categoria" [appendTo]="'body'" />
+      <small class="mt-1 text-red-500" id="inventarioId-help" *ngIf="isValidField('inventarioId')">
+        El campo Inventario es requerido*
+      </small>
+      <label for="float-input">Inventario</label>
+    </p-floatLabel>
+  </div>
+</form>
+<div class="mt-4">
+  <p-button pRipple label="Guardar" *ngIf="!isViewInputId" (click)="saveOrEditProduct('save')" class="mt-2"
+    [text]="true" />
+  <p-button pRipple label="Actualizar" *ngIf="isViewInputId" (click)="saveOrEditProduct('update')" class="mt-2"
+    [text]="true" />
+</div>
+

@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: ${HOTS_URL}
+    username: ${USERNAME_DB}
+    password: ${PASSWORD_DB}
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: ${SERVER_PORT}
+
+application:
+  request:
+    mappings: /stock-master-service
+  jwt:
+    secret:
+      key: a41a397278a61cbfcdd97dc943811157ab1076cceb37d29f96a9407175a43aed
+    expiration:
+      time: 3600000
