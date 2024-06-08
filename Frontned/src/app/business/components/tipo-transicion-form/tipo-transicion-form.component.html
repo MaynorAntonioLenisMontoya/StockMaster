@@ -1,0 +1,21 @@
+<form class="card" [formGroup]="myForm" (ngSubmit)="saveOrEditTipoTransicion">
+  <div class="mt-2" *ngIf="isViewInputId">
+    <p-floatLabel>
+      <p-inputNumber [disabled]="true" formControlName="id" id="nombre" />
+      <label for="float-input">Codigo</label>
+    </p-floatLabel>
+  </div>
+  <div class="mt-3">
+    <p-floatLabel>
+      <input formControlName="nombre" pInputText id="nombre" aria-describedby="nombre-help" />
+      <small class="mt-1 text-red-500" id="nombre-help" *ngIf="isValidField('nombre')">
+        El campo nombre es requerido*
+      </small>
+      <label for="float-input">Nombre</label>
+    </p-floatLabel>
+  </div>
+</form>
+<div class="mt-4">
+  <p-button pRipple label="Guardar" *ngIf="!isViewInputId" (click)="saveOrEditTipoTransicion('save')" class="mt-2" [text]="true" />
+  <p-button pRipple label="Actualizar" *ngIf="isViewInputId" (click)="saveOrEditTipoTransicion('update')" class="mt-2" [text]="true" />
+</div>
