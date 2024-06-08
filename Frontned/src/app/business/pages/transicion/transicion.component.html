@@ -1,0 +1,74 @@
+<div class="mt-2">
+  <!-- <p-toast /> -->
+  <p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="left">
+      <h2>Gestion De Tipo Transición</h2>
+    </ng-template>
+    <ng-template pTemplate="right">
+      <p-button pRipple label="Nuevo" icon="pi pi-plus" class="mr-2" (click)="openNew()" />
+    </ng-template>
+  </p-toolbar>
+</div>
+
+<div class="mt-2">
+  <p-table class="mt-4" #dt [value]="tipoTransiciones"
+  [tableStyle]="{ 'min-width': '75rem' }" [(selection)]="selectedTipoTransiciones" [rowHover]="true" dataKey="id"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 4rem">
+        <p-tableHeaderCheckbox />
+      </th>
+      <th pSortableColumn="id">
+        Codigo
+        <p-sortIcon field="id" />
+      </th>
+      <th pSortableColumn="nombre">
+        Nombre
+        <p-sortIcon field="nombre" />
+      </th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-tipoTransicion>
+    <tr>
+      <td>
+        <p-tableCheckbox [value]="tipoTransicion" />
+      </td>
+      <td>
+        {{ tipoTransicion.id }}
+      </td>
+      <td>
+        {{ tipoTransicion.nombre }}
+      </td>
+      <td>
+        <p-button pRipple icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" severity="success"
+          (click)="editTipoTransicion(tipoTransicion)" />
+        <p-button pRipple icon="pi pi-trash" severity="danger" [rounded]="true" [outlined]="true"
+          (click)="deleteTipoTransicion(tipoTransicion)" />
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="card flex justify-content-center">
+      <p-paginator
+          (onPageChange)="onPageChange($event)"
+          [first]="pageNumber"
+          [rows]="pageSize"
+          [totalRecords]="totalRecord"
+          [rowsPerPageOptions]="[totalRecord, 10, 20, 30, 40, 50]" />
+  </div>
+</ng-template>
+</p-table>
+
+<p-dialog [(visible)]="tipoTransicionDialog" [style]="{ width: '450px' }" [header]="nameModal" [modal]="true"
+styleClass="p-fluid">
+<ng-template pTemplate="content">
+  <app-tipo-transicion-form (onNewTipoTransicion)="getOnNewTipoTransicion()" [updateTipoTransicion]="tipoTransicion" />
+</ng-template>
+
+</p-dialog>
+
+<p-confirmDialog [style]="{ width: '450px' }" />
+
+</div>
