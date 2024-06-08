@@ -1,6 +1,0 @@
-.name-app {
-  font-size: 24px;
-  font-weight: bold; /* Negrita */
-  margin-right: auto; /* Empuja el título a la izquierda */
-  transform: perspective(500px) rotateY(-10deg); /* Curva el texto */
-}

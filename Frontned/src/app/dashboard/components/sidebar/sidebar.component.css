@@ -1,9 +1,0 @@
-/* Define estilos para los enlaces activos */
-.menu-item-active {
-  border: 1px solid var(--blue-600);
-}
-
-/* Asegúrate de que no haya subrayado en los enlaces */
-a {
-  text-decoration: none;
-}

@@ -1,7 +1,0 @@
-spring:
-  liquibase:
-    url: jdbc:postgresql://localhost:5432/stockmaster
-    user: postgres
-    password: 1234
-    driver-class-name: org.postgresql.Driver
-    change-log: classpath:db/changelog/db.changelog-master.yml
